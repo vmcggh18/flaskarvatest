@@ -4,7 +4,6 @@ __pycache__
 venv/
 config.ini
 run.py
-config.py
 views3.py
 views1.py
 admin_views1.py
