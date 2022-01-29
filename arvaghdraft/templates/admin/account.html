@@ -1,0 +1,35 @@
+{% extends "public/templates/layout.html" %}
+{% block title %}Profile{% endblock %}
+<br>
+<br>
+<br>
+<br>
+{% block main %}
+<br>
+<br>
+<br>
+<br>
+<div class="form-container">
+    <h1 class="form-title">Welcome to the Profile Page!</h1>
+            <br>
+            <div class="media">
+                <img class="rounded-circle account-img" src="{{ image_file }}">
+                <div class="media-body">
+                  <h2 class="account-heading">{{ current_user.username }}</h2>
+                  <p class="text-secondary">{{ current_user.email }}</p>
+                </div>
+              </div>
+    <form method="POST" action="" enctype="multipart/form-data"> 
+        {{ form.csrf_token() }}
+        {% for field in form if field.name != "csrf_token" %}
+        <p class = "form-label">{{ field.label() }}</p>
+        <p class = "form-input">{{ field }}
+            {% for error in field.errors %}
+                {{ error }}
+            {% endfor %}
+        </p>
+        {% endfor %}
+    </form>
+</div>
+{% endblock %}
+{% block footer %}{% endblock %}

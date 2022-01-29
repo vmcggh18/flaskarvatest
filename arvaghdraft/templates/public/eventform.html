@@ -1,0 +1,40 @@
+{% extends "public/templates/layout.html" %}
+{% block title %}Arvagh Event Form Submission{% endblock %}
+
+
+<br>
+<br>
+{% block main %}
+<br>
+<br>
+<h1 class="form-title">Submit an event</h1>
+<h2 class="form-subtitle">Are you a business or an individual involved in organising a local event? </h2>
+<p class="form-detail">Use the form below to upload the details of your event to Arvagh Online! <br>
+Fill in the required fields and hit the submit button. <br>
+You should then see a message saying 'form submitted'. <br>
+The form should be visible on the "What's On" page, once approved for content by the Site Administrator.<br>
+<br>
+<form action="" method="post" class="event-form">
+<div class="form-container">
+    {{ form.csrf_token() }}
+
+    {% for field in form if field.name != "csrf_token" %}
+        <p class = "form-label">{{ field.label() }}</p>
+        <p class = "form-input">{{ field }}
+            {% for error in field.errors %}
+                {{ error }}
+            {% endfor %}
+        </p>
+    {% endfor %}
+</div>
+</form>
+
+ 
+
+{% endblock %}
+{% block footer %}
+<br>
+<div class="badge1" data-badge="{{ visit }}"><span class="hits">Site Hits</span>
+</div>
+<br>
+{% endblock %}

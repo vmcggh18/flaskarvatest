@@ -1,0 +1,30 @@
+{% extends "public/templates/layout.html" %}
+{% block title %}Login Form{% endblock %}
+<br>
+<br>
+<br>
+<br>
+{% block main %}
+<br>
+<br>
+<br>
+<br>
+<div class="form-container">
+    <h1 class="form-title">Login for Administrators only!</h1>
+        <h2 class="form-subtitle">Administrators can use the form below to sign in.</h2>
+            <br>
+    <form action="/login" method="post" class="login-form">
+  
+        {{ form.csrf_token() }}
+        {% for field in form if field.name != "csrf_token" %}
+        <p class = "form-label">{{ field.label() }}</p>
+        <p class = "form-input">{{ field }}
+            {% for error in field.errors %}
+                {{ error }}
+            {% endfor %}
+        </p>
+        {% endfor %}
+    </form>
+</div>
+{% endblock %}
+{% block footer %}{% endblock %}

@@ -1,0 +1,70 @@
+{% extends "public/templates/layout.html" %}
+{% block title %}Arvagh Whats On{% endblock %}
+
+
+<br>
+<br>
+{% block main %}
+<br>
+<br>
+<h1 class="events-list-title">What's on in Arvagh</h1>
+<div class="events-container">
+    {% for event in events %}
+        {% if current_user.is_authenticated %}
+            <div class="events-card">
+                <h2><em>Title:</em> <a class="mr-2 event-link" href="{{ url_for('event', event_id=event.id) }}">{{ event.title }}</a></h2>
+                <p class="text-muted"><em>Date posted:</em> {{ event.date_posted.strftime('%Y-%m-%d') }}</p>
+                <hr> 
+                <p class= "pad-1"><em>Submitted By:</em> {{ event.name }}</p>
+                <p class= "pad-1"><em>Date:</em> {{ event.date }}</p>
+                <p class= "pad-1"><em>Venue:</em> {{ event.venue }}</p>
+                <p class= "pad-1"><em>Time:</em> {{ event.eventtime }}</p>
+                <p class= "pad-1"><em>Additional Information:</em> {{ event.message }}</p>
+                <p class= "pad-1"><em>Email:</em> {{ event.email }}</p>
+                {# {% for error in event.errors %}
+                {{ error }}
+                {% endfor %} #} 
+                <div class="handle-events button_container">
+                    <a href="{{ url_for('update_event', event_id=event.id) }}"><button class="update_button" >EDIT</button></a>
+                    <form id = "del_but" action="{{ url_for('delete_event', event_id=event.id) }}" method="POST" onSubmit="return confirm('Are you sure you wish to delete?');">
+                        <input class="del_button" id = "del_but" type="submit" value="DEL">
+                    </form>
+                    {% if event.approved_event == false %}
+                    <a href="{{ url_for('approve_event', event_id=event.id) }}"><button class="approve_button" >Approve</button></a>
+                    {% endif %}
+                </div> 
+                {% if event.date >= current %}
+                    <h2 class = "countdown">Days Remaining: {{ event.date - current }}</h2>
+                {% else %}
+                    <h2 class = "countdown">Event is Expired</h2>
+                {% endif %}
+            </div>
+            <hr>
+        {% endif %}
+        {% if current_user.is_anonymous and event.approved_event != false %}
+        <div class="events-card">
+            <h2><em>Title:</em> <a class="mr-2 event-link" href="{{ url_for('event', event_id=event.id) }}">{{ event.title }}</a></h2>
+            <p class="text-muted"><em>Date posted:</em> {{ event.date_posted.strftime('%Y-%m-%d') }}</p>
+            <hr> 
+            <p class= "pad-1"><em>Submitted By:</em> {{ event.name }}</p>
+            <p class= "pad-1"><em>Date:</em> {{ event.date }}</p>
+            <p class= "pad-1"><em>Venue:</em> {{ event.venue }}</p>
+            <p class= "pad-1"><em>Time:</em> {{ event.eventtime }}</p>
+            <p class= "pad-1"><em>Additional Information:</em> {{ event.message }}</p>
+            <p class= "pad-1"><em>Email:</em> {{ event.email }}</p> 
+            {% if event.date >= current %}
+                <h2 class = "countdown">Days Remaining: {{ event.date - current }}</h2>
+            {% else %}
+                <h2 class = "countdown">Event is Expired</h2>
+            {% endif %}
+        </div>
+        {% endif %}
+    {% endfor %}
+</div>
+{% endblock %}
+{% block footer %}
+<br>
+<div class="badge1" data-badge="{{ visit }}"><span class="hits">Site Hits</span>
+</div>
+<br>
+{% endblock %}

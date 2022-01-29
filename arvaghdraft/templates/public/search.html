@@ -1,0 +1,54 @@
+{% extends "public/templates/layout.html" %}
+{% block title %}Events Found{% endblock %}
+
+
+<br>
+<br>
+{% block main %}
+<br>
+<br>
+<h1 class="events-list-title">Your search returned the following</h1>
+<div class="events-container">
+    <br>
+    <br>
+    {% for event in events %}
+        {% if current_user.is_anonymous and event.approved_event != false or current_user.is_authenticated %}
+        <div class="events-card">  
+            <div class="text-container">
+                <p class= "pad-1"><em>Event Title:</em> {{ event.title }}</p>
+                <p class= "pad-1"><em>Submitted By:</em> {{ event.name }}</p>
+                <p class= "pad-1"><em>Date:</em> {{ event.date }}</p>
+                <p class= "pad-1"><em>Venue:</em> {{ event.venue }}</p>
+                <p class= "pad-1"><em>Time:</em> {{ event.eventtime }}</p>
+                <p class= "pad-1"><em>Additional Information:</em> {{ event.message }}</p>
+                <p class= "pad-1"><em>Email:</em> {{ event.email }}</p>
+        {% endif %}
+                <div class="handle-events button_container">
+                    {% if current_user.is_authenticated %}
+                    <a href="{{ url_for('update_event', event_id=event.id) }}"><button class="update_button" >EDIT</button></a>
+                
+                    <form id = "del_but" action="{{ url_for('delete_event', event_id=event.id) }}" method="POST" onSubmit="return confirm('Are you sure you wish to delete?');">
+                        <input class="del_button" id = "del_but" type="submit" value="DEL">
+                    </form>
+                    {% endif %}
+                    {% if event.approved_event == false %}
+                        <a href="{{ url_for('approve_event', event_id=event.id) }}"><button class="approve_button" >Approve</button></a>
+                    {% endif %}
+                
+                </div>
+        </div>
+       
+    </div>
+   
+    {% endfor %} 
+</div>
+<div class = "view-all">
+    <a href='/eventlist'><button class='view-events'>View all Events!</button></a>
+</div>
+{% endblock %}
+{% block footer %}
+<br>
+<div class="badge1" data-badge="{{ visit }}"><span class="hits">Site Hits</span>
+</div>
+<br>
+{% endblock %}

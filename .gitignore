@@ -1,0 +1,17 @@
+__pycache__
+.env
+.flaskenv
+venv/
+config.ini
+run.py
+config.py
+views3.py
+views1.py
+admin_views1.py
+site.db
+draft1.html
+index1.html
+rough.csv
+events.json
+eventList.csv
+default.json

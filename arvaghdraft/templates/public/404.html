@@ -1,0 +1,17 @@
+{% extends "public/templates/layout.html" %}
+{% block title %}Page Not Found{% endblock %}
+
+{% block main %}
+  <div class = "center-me">
+  <h1 class="error-message center-me">Oops! Looks like item cannot be found. (404)</h1>
+  <h1 class="error-message-subtext center-me">Check spelling and try again or look for another item</h1>
+  </div>
+  <br>
+  <div class = "center-me">
+    <a href="{{ url_for('index') }}"><button class='home-button'>Back to Home Page</button></a>
+  </div>
+ 
+  
+{% endblock %}
+{% block footer %}
+{% endblock %}

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>{% block title %}{% endblock %}</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    </head>
+    <body>
+        <header id="header">
+            <a href="/" class='logo-link'>
+                <h1 class="logo">Arvagh Online</h1>
+            </a>
+            <input type="checkbox" id="nav-toggle" class="nav-toggle">
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('index') }}">Home</a></li>
+                    <li><a href="{{ url_for('about') }}">About</a></li>
+                    {% if session['logged_in'] %}
+                    <li class="dropdown">
+                        <button class="dropbtn">Dropdown 
+                        <i class="fa fa-caret-down"></i>
+                        </button>
+                        <li class="dropdown-content">
+                        <a href="{{ url_for('event') }}">Submit an event</a>
+                        <a href="#">Edit an Event</a>
+                        <a href="#">Delete an event</a>
+                        </li>
+                    </li> 
+                {% else %}
+                    <li><a href="{{ url_for('event') }}">Submit an event</a></li>
+                {% endif %}
+                    <li><a href="{{ url_for('eventlist') }}">What's On</a></li>
+                    {% if session['logged_in'] %}
+                    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+            <label for="nav-toggle" class="nav-toggle-label">
+                <span></span>
+            </label>
+        </header>
+        <br>
+        <br>
+        <div class = "container-flex">
+        {% with messages = get_flashed_messages(with_categories=true) %} 
+            {% if messages %}
+              {% for category, message in messages %}
+                <div class ="alert-{{ category }}">
+                  {{ message }}
+                </div>
+              {% endfor %}
+            {% endif %}
+        {% endwith %} 
+        </div>
+        
+        <main>{% block main %} {% endblock %}</main>
+        <script src="{{ url_for('static', filename='js/app.js') }}" async defer></script>
+        
+        <footer id="footer">
+            {% block footer%}
+            <br>
+            <div class="badge1" data-badge="{{ sitevisits }}"><span class="hits">Site Hits</span>
+            </div>
+            <br>
+            {% endblock %}
+            <p class="social"> Follow us on <a class="social-ico" href="https://www.facebook.com/ArvaghTownDevelopment"
+                    target="_new"><img class="fico" src="{{ url_for('static', filename='images/facebook.ico') }}"
+                        alt="facebook icon"></a></p>
+
+
+            <p class="copy">&copy; Copyright 2021 the_weaver.</p>
+           
+        </footer>
+        
+    </body>
+
+</html>

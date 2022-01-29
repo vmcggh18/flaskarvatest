@@ -1,0 +1,64 @@
+{% extends "public/templates/layout.html" %}
+{% block title %}Things to do{% endblock %}
+<br>
+<br>
+{% block main %}
+<br>
+<br>
+<div class="container-flex things-container">
+    <h1 class = "things-title">Things to do</h1>
+    <p class="things-text">Being in the drumlin belt, Arva is surrounded by unspoiled landscape dotted with lakes and historic towns and villages and the surrounding low rolling hills and lakes are well suited to land and water based activities. The area is a paradise for anglers and is very popular with fishermen. The lakes such as Hollybank, Gulladoo and Rockfield offer excellent angling all year round.<br>
+    Self-catering is popular and a range of self catering cottages and holiday homes are available in the vicinity of Arvagh.<br>
+    Arvagh is within easy reach of Killykeen Forest Park, Cavan Adventure Centre, Cavan Museum and the WW1 Trench Experience, the Knights & Conquest Centre in Granard and the Royal Canal Greenway, which can be accessed in nearby Longford.
+   </p>
+    <h2 class = "subtitle">Fishing:</h2>
+        <div class = "paragraph-container">
+            <div class = "things-text-container">
+                <p class = "things-text">The area is very popular with fishermen and lakes such as Hollybank, Gulladoo and Rockfield offer excellent angling all year round. An international fishing tournament takes place every September. Bait, boat hire and tackle can be hired in Arvagh Town.</p>
+            </div>
+            <div class = "thing-img-container"><img class = "thing-image" src="{{ url_for('static', filename='images/pebbles.jpg') }}" alt="Pebbles Default Image"></div>
+        </div>
+        <h2 class="subtitle">Self Catering:</h2>
+        <div class = "paragraph-container">
+            <div class = "things-text-container">
+                <p class = "things-text">There are several self catering accommodations scattered in the town and surrounding area, in the form of holiday chalets, villas, log cabins, apartments, and cottages, facilitating a comfortable and affordable stay in this region.</p>
+            </div>
+            <div class = "thing-img-container"><img class = "thing-image" src="{{ url_for('static', filename='images/bubbles.jpg') }}" alt="Bubbles Default Image"></div>
+        </div>
+        <h2 class="subtitle">Golfing:</h2>
+        <div class = "paragraph-container">
+            <div class = "things-text-container">
+                <p class = "things-text">McSeain’s 18-hole pitch and putt course, with Bar and restaurant is located in nearby Cornafean (4 miles). This is a 23-acre 18 hole par 3 golf course set in scenic drumlin countryside.</p>
+            </div>
+            <div class = "thing-img-container"><img class = "thing-image" src="{{ url_for('static', filename='images/pebbles.jpg') }}" alt="Pebbles Default Image"></div>
+        </div>
+        <h2 class="subtitle">Cycling & Hiking:</h2>
+        <div class = "paragraph-container">
+            <div class = "things-text-container">
+                <p class = "things-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi, ex est id ullam voluptatibus, nulla incidunt maxime animi enim earum mollitia a reiciendis doloribus vel deserunt exercitationem voluptate cumque et similique dolore vitae nihil quia qui! Quis perferendis velit, nam ab hic incidunt dolor pariatur laboriosam architecto aspernatur porro aliquam?  </p>
+            </div>
+            <div class = "thing-img-container"><img class = "thing-image" src="{{ url_for('static', filename='images/bubbles.jpg') }}" alt="Bubbles Default Image"></div>
+        </div>
+
+
+
+
+
+
+
+    <h3 class="things-to-note">Noteworthy items</h3>
+    <p class="item-to-do">The famous Arvagh Agricultural Show takes place annually every July. </p>
+    <p class="item-to-do">The "3 Province Festival" also takes place in Arva over 10 days from the last weekend in July until the first weekend in August. The festival includes music, theatre, comedy, art, competitions and other events.</p>
+    <p class="item-to-do">An international fishing tournament takes place every September.  </p>
+
+</div>
+    <div class = "center-me">
+        <a href="url_for('new_event')"><button class='submit-event'>Submit an Event</button></a>
+    </div>
+{% endblock %}
+{% block footer %}
+<br>
+<div class="badge1" data-badge="{{ visit }}"><span class="hits">Site Hits</span>
+</div>
+<br>
+{% endblock %}

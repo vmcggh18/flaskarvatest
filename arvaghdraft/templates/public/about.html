@@ -1,0 +1,62 @@
+{% extends "public/templates/layout.html" %}
+{% block title %}About Arvagh{% endblock %}
+<br>
+<br>
+{% block main %}
+<br>
+<br>
+<div class="container-flex about-container">
+    <h1 class = "about-title">Welcome to Arvagh Online</h1>
+    <h3 class = "site-function">More information needed here on function and purpose of the site Arvagh online. Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique nulla suscipit accusamus. Quibusdam, laboriosam itaque. Tenetur vitae, adipisci eum quod iure doloribus repellat ratione eligendi obcaecati ipsa animi molestiae distinctio culpa blanditiis illum soluta debitis repudiandae, aspernatur nesciunt quibusdam sint quaerat. Eveniet laborum sit fugiat animi expedita enim similique quae?</p>
+    <div class = paragraph-container>
+        <div class = "about-text-container">
+            <p class = "about-text">Arvagh or Arva, is a village in county Cavan, Ireland, on the shores of Garty Lough and overlooked by Bruse Hill.  The hill of Bruse is small in size and topped with three stone cairns belonging to Neolithic period. Its cordinates are Latitude: 53.9167, Longitude: -7.58333 (53° 55' 0" North, 7° 34' 60" West) with an altitude of 54m.<br>
+            Arvagh is situated in the centre of the drumlin belt in the heart of the Irish Lakelands on the border of counties Longford and Leitrim, part of Ireland's hidden heartlands, and is famous as the town where the three provinces of Ulster, Leinster and Connacht meet. In fact the town is located approximately 3 km southeast of the tripoint.</p>
+        </div>
+        <div class = "about-img-container"><img class = "about-image" src="{{ url_for('static', filename='images/aerial.png') }}" alt="Aerial View"></div>
+    </div>
+    <h2 class="subtitle">History:</h2>
+        <p class = "about-text-lead">
+        In Irish Arvagh translates as Árṁaċ/Ármhach, meaning 'division or place of slaughter' or commonly 'battlefield'. It is thought that Ármhach was brought about because, being situated so close to the tripoint, it was a convenient location to settle disputes between the three provinces. The royal families of these counties would battle in Arvagh and as a result many died, hence "Place of Slaughter".</p>
+    <div class = paragraph-container>
+        <div class = "about-text-container">
+            <p class = "about-text">Traditionally Monthly fairs were of considerable local trade importance, held during different months throughout the year. An article sourced at libaryireland.com puts the population in 1837 at 4,580 of which 422 live in the town. In 1861 Arvagh had a population of 6,294. In 1871 Arvagh had a population of 5,777, with 686 in the town and in 1881 this had fallen to 5,606. In 1891 the population was 4,912. In 1901 the population was 4,381 and in 1911 the population was 3,994. The census of 2016 put the population within the town at 411.</p>
+        </div>
+        <div class = "about-img-container"><img class = "about-image" src="{{ url_for('static', filename='images/fair.png') }}" alt="Fair image"></div>
+    </div>
+    <div class = paragraph-container>
+        <div class = "about-text-container">
+            <p class="about-text">The Church of Ireland, built in 1819, is believed to be the oldest building in Arva and retains much of its original 19th century features. It is built in a subdued Gothic revival Style and is believed to have been designed by the well known architect, John Bowden, who designed many churches and public buildings across Ireland. The north transept was a later addition.</p> 
+        </div>
+        <div class = "about-img-container"><img class = "about-image" src="{{ url_for('static', filename='images/church.png') }}" alt="Church of Ireland"></div>
+    </div>
+    <div class = paragraph-container>
+        <div class = "about-text-container">
+            <p class = "about-text"> Arvagh Market House is another old building comissioned for construction by the Earl of Gosford sometime between 1810 to 1830, to facilitate the growing economic prosperity of Arvagh in the early nineteenth century.The design is attributed to W.D. Butler (1794-1857), who designed a number of market and court houses throughout Ireland. Historically, it functioned as a market house at ground floor level and a courthouse on first floor level. More recently it houses a library, community center and offices.
+            </p>
+        </div>
+        <div class = "about-img-container"><img class = "about-image" src="{{ url_for('static', filename='images/Market_House.jpg') }}" alt="Market House"></div>
+    </div>
+    <div class = paragraph-container>
+        <div class = "about-text-container">
+            <p class = "about-text">The sacred heart church built from 1927 to 1939 is another impressive structure, which replaced the previous building built circa 1860. It was designed by the well respected Architect R.H. Byrne (1877-1946) and built by the contractor Charles Doyle & Sons, Mullingar. It is constructed in a Romanesque style and finished in  local stone, with chiselled granite dressings on the two towers. The symmetrical façade incorporates many features typical of Romanesque churches such as the rose window, round-arched openings, and Lombard bands. </p>
+        </div>
+        <div class = "about-img-container"><img class = "about-image" src="{{ url_for('static', filename='images/chapel.png') }}" alt="Sacreh Heart Church"></div>
+    </div>
+
+    <h3 class="things-to-note">Noteworthy items</h3>
+        <p class="item-to-do">The famous Arvagh Agricultural Show takes place annually every July. </p>
+        <p class="item-to-do">The "3 Province Festival" also takes place in Arva over 10 days from the last weekend in July until the first weekend in August. The festival includes music, theatre, comedy, art, competitions and other events.</p>
+        <p class="item-to-do">An international fishing tournament takes place every September.</p>
+
+</div>
+    <div class = "center-me">
+        <a href="url_for('new_event')"><button class='submit-event'>Submit an Event</button></a>
+    </div>
+{% endblock %}
+{% block footer %}
+<br>
+<div class="badge1" data-badge="{{ visit }}"><span class="hits">Site Hits</span>
+</div>
+<br>
+{% endblock %}

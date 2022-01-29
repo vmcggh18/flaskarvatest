@@ -1,0 +1,133 @@
+{% extends "public/templates/layout.html" %}
+{% block title %}Arvagh Online{% endblock %}
+<br>
+<br>
+{% block main %}
+<br>
+<br>
+<div class="flex-container">
+    <div class="slide-content">
+        <div class="info">
+        <h2 class="info-title">Welcome to Arvagh online</h2>
+        <br>
+        <p class="info-text">
+            Arvagh online is your local guide to ongoing and upcoming events within Arvagh Town region. Submit your own event and check in regularly to see what's happening. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsam amet porro ex culpa ipsa praesentium exercitationem fuga adipisci eos a?</p>
+            <div class="container pad-3 center-me">
+                <a href='/event/new'><button class="submit-event" >Submit an Event</button></a>
+             </div>
+        </div>
+        <div class="slideContainer">
+            <div class="slide">
+                <img src="{{ url_for('static', filename='images/Market_house.jpg') }}" alt="Market House">
+                <div class="caption">Market House</div>
+            </div>
+            <div class="slide">
+                <img src="{{ url_for('static', filename='images/church.png') }}" alt="Church of Ireland">
+                <div class="caption">Church of Ireland</div>
+            </div>
+            <div class="slide">
+                <img src="{{ url_for('static', filename='images/arvafair.jpg') }}" alt="The fair">
+                <div class="caption">Town Fair circa 1940</div>
+            </div>
+            <div class="slide">
+                <img src="{{ url_for('static', filename='images/aerial.png') }}" alt="aerial image">
+                <div class="caption">Sky View!</div>
+            </div>
+            <div class="slide">
+                <img src="{{ url_for('static', filename='images/chapel.png') }}" alt="catholic church">
+                <div class="caption">Sacred Heart Church</div>
+            </div>
+            <div class="slide">
+                <img src="{{ url_for('static', filename='images/fishing.png') }}" alt="Fishing">
+                <div class="caption">Anglers Paradise!</div>
+            </div>
+            {# <a class="prevBtn">&#8249;</a> #}
+            {# <a class="nextBtn">&#8250;</a> #}
+            <a class="prevBtn">&#8810;</a>
+            <a class="nextBtn">&#8811;</a>
+        </div> {# slide container #}
+        <br>
+        <div class="thumbnail">
+            <div class="imageCol">
+                <img class="thumbImage" src="{{ url_for('static', filename='images/Market_house.jpg') }}"
+                    style="width:100%" onclick="setSlide(1)" alt="Market House">
+            </div>
+            <div class="imageCol">
+                <img class="thumbImage" src="{{ url_for('static', filename='images/church.png') }}" style="width:100%"
+                    onclick="setSlide(2)" alt="Church of Ireland">
+            </div>
+            <div class="imageCol">
+                <img class="thumbImage" src="{{ url_for('static', filename='images/arvafair.jpg') }}" style="width:100%"
+                    onclick="setSlide(3)" alt="The fair">
+            </div>
+            <div class="imageCol">
+                <img class="thumbImage" src="{{ url_for('static', filename='images/aerial.png') }}" style="width:100%"
+                    onclick="setSlide(4)" alt="Aerial image">
+            </div>
+            <div class="imageCol">
+                <img class="thumbImage" src="{{ url_for('static', filename='images/chapel.png') }}" style="width:100%"
+                    onclick="setSlide(5)" alt="catholic church">
+            </div>
+            <div class="imageCol">
+                <img class="thumbImage" src="{{ url_for('static', filename='images/fishing.png') }}" style="width:100%"
+                    onclick="setSlide(6)" alt="fishing">
+            </div>
+            <br>
+        </div> {# thumbnails #}
+        <div class="info">
+            <p class = "font-change">Arvagh or Arva, is a village in county Cavan, Ireland, on the shores of Garty Lough and overlooked by Bruse Hill. The Arvagh area is unique in its geographical location between 3 town lands, 3 bar­onies, 3 counties and 3 provinces. It is situated in the centre of the drumlin belt in the heart of the Irish Lakelands on the border of counties Longford and Leitrim, part of Ireland's hidden....<a href='/about' class='more-info-link'>Read more..</a>
+            </p>
+        </div>
+    </div> {# slide content #}
+    <div class="side-content">
+            <div class = "spacer-m2"><h2 class="weather-title">Weather Dashboard</h2></div>
+            <form id="weather_form" action="{{ url_for('get_weather_data') }}" method="post">
+                Location: <input id="weather_input" type="text" name="location" required='required' placeholder="Enter city / town here"><br>
+                <button id="weather_submit" type="submit" value="submit">Get or Update Weather</button>
+            </form>
+            <div class="weather-widget">
+                <div class="weather_card">
+                    <img src="http://openweathermap.org/img/wn/{{ icon }}@2x.png" class="weather-icon" alt="Weather icon">
+                    <div class="container">
+                        <h3 class="weather-loc">Weather in: {{ weather_dict['name']}}</h3>
+                        <h2 class = "pad-1">Temperature: {{ weather_dict['main']['temp'] }} deg C</h2>
+                        <h3 class = "pad-1"><b>General: {{ weather_dict["weather"][0]["main"] }}</b></h3>
+                        <h4 class = "pad-1"><b>Feels like: {{ weather_dict['main']['feels_like'] }} deg C</b></h4>
+                        <h3 class = "pad-1"><b>Pressure: {{ weather_dict['main']['pressure'] }} hPa</b></h3>
+                        <h3 class = "pad-1"><b>Humidity: {{ weather_dict['main']['humidity'] }} %</b></h3> 
+                        <h3 class = "pad-1"><b>Wind Speed: {{ weather_dict['wind']['speed']}} m/s</b></h3> 
+                    </div> {# container #}
+                </div> {# weather card #}
+             </div>  {# weather widget #}      
+            <div class = "spacer-m2"><h2 class="event-title">Current events {{ total_events }}</h2></div>
+            <div class="event-card">       
+                {% for event in events %}
+                {% if current_user.is_anonymous and event.approved_event != false or current_user.is_authenticated %}
+                <div class="container pad-2">
+                   <a href="{{ url_for('event', event_id=event.id) }}" class='more-info-link-inverse'>{{ event.date }}: {{ event.title }} Read More....</a>
+                </div>
+                   <hr>
+                   {% endif %}
+                {% endfor %}  
+                <div class="container pad-3">  
+                    <a href='/eventlist' class='view-events-inverse'>Click to View all Events</a></div> 
+                <div class="container">
+                    <hr>
+                    <div class="form-container">
+                        <form id="search_form" action="{{ url_for('search') }}" class = "search-form" method="post">
+                                Search Events: <input id="search_input" type="text" name="searched" placeholder="Insert Event Title Here" required='required'><br>
+                                <button id="search_submit" type="submit" value="submit">Search Events</button>       
+                        </form>
+                    </div>
+                    <hr>
+                    <div class="container pad-3">
+                        <a href='/event/new' class='inverse-submit-event'>Click to Submit an Event</a>
+                     </div>
+                </div>      
+            </div> {# event card #}
+    </div> {# side content #}
+</div> {# main flex container #}
+    {% block javascript %}
+        <script src="{{ url_for('static', filename='js/app.js') }}" async defer></script>
+    {% endblock %}
+{% endblock %}

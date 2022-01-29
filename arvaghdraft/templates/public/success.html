@@ -1,0 +1,28 @@
+{% extends "public/templates/layout.html" %}
+{% block title %}Success Page{% endblock %}
+
+
+<br>
+<br>
+{% block main %}
+<br>
+<br>
+<div class="redirect center-me">
+    <h2 class="sub-title">Your event has been successfully submitted!</h2>
+    <p class="text"> The form will be uploaded once approved for content by the site administrator</p>
+    <br>
+    <p class="text">If the event needs to be revised or uppdated in the future a request can be sent through the link shown on the events listing (What's On!) page.</p>
+    <br>
+    <div class="submit-button">
+        <p class="text">To submit another event go to event form</p>
+        <a href='/event/new'><button class='submit-event'>Submit an Event</button></a>
+        <br>
+        <p class="text">To view existing events go to whats on!</p>
+        <a href='/eventlist'><button class='view-events'>View What's On!</button></a>
+
+    </div>
+    
+</div>
+{% endblock %}
+{% block footer %}
+{% endblock %}

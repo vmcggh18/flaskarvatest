@@ -1,0 +1,16 @@
+{% extends "public/templates/layout.html" %}
+{% block title %}Page Not Found{% endblock %}
+
+{% block main %}
+  <div class = "center-me">
+  <h1 class="error-message center-me">Oops! Something went wromg (500)</h1>
+  <h1 class="error-message-subtext center-me">We are experiencing some trouble on our end. Please try again later!.</h1>
+  </div>
+  <br>
+  <div class = "center-me">
+    <a href="{{ url_for('index') }}"><button class='home-button'>Back to Home Page</button></a>
+  </div>
+  
+{% endblock %}
+{% block footer %}
+{% endblock %}

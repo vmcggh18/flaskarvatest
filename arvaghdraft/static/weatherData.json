@@ -1,0 +1,44 @@
+{
+"coord": {
+"lon": -7.5833,
+"lat": 53.9167
+},
+"weather": [
+{
+"id": 803,
+"main": "Clouds",
+"description": "broken clouds",
+"icon": "04d"
+}
+],
+"base": "stations",
+"main": {
+"temp": 7.95,
+"feels_like": 4.83,
+"temp_min": 7.95,
+"temp_max": 7.95,
+"pressure": 1031,
+"humidity": 71,
+"sea_level": 1031,
+"grnd_level": 1024
+},
+"visibility": 10000,
+"wind": {
+"speed": 5.48,
+"deg": 291,
+"gust": 12.12
+},
+"clouds": {
+"all": 57
+},
+"dt": 1643457916,
+"sys": {
+"country": "IE",
+"sunrise": 1643444535,
+"sunset": 1643475866
+},
+"timezone": 0,
+"id": 2966873,
+"name": "Arvagh",
+"cod": 200
+}

@@ -1,0 +1,32 @@
+{% extends "public/templates/layout.html" %}
+{% block title %}Registration Form{% endblock %}
+<br>
+<br>
+<br>
+<br>
+{% block main %}
+<br>
+<br>
+<br>
+<br>
+<div class="form-container">
+    <h1 class="form-title">Administrators only!</h1>
+        <h2 class="form-subtitle">Administrators can use the form below to register an account.</h2>
+            <p class="form-detail">Ordinary users need not create an account to browse and use the site.<br>
+            Already an administrator: <a href="#" class='sign-in-link'>Sign in here</a></p>
+            <br>
+    <form action="/registration" method="post" class="reg-form">
+  
+        {{ form.csrf_token() }}
+        {% for field in form if field.name != "csrf_token" %}
+        <p class = "form-label">{{ field.label() }}</p>
+        <p class = "form-input">{{ field }}
+            {% for error in field.errors %}
+                {{ error }}
+            {% endfor %}
+        </p>
+        {% endfor %}
+    </form>
+</div>
+{% endblock %}
+{% block footer %}{% endblock %}
