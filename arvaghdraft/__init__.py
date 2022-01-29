@@ -15,10 +15,9 @@ app = Flask(__name__)
 app.config.from_object("config.DevelopmentConfig")
 uri = os.environ.get("DATABASE_URL")  
 if uri.startswith("postgres://"):
-    uri = uri.replace("postgres://", "postgresql://", 1)
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL') or 'sqlite:///site.db'
-
-    
+    db_change = uri.replace("postgres://", "postgresql://", 1)
+# app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL') or 'sqlite:///site.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = uri or 'sqlite:///site.db'   
 # get rid of deprecation error (however must be true if using whoosh for searching)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 # initialise db to store model tables
