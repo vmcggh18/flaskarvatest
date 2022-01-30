@@ -21,6 +21,7 @@ import pandas as pd
 # -- authentication and authorisation (ongoing testing with anonymous and admin user)
 # -- notification when item uploaded (not yet)
 # -- email (not yet)
+# -- event email should not be unique as several events can be associated with an email 
 # -- check should approve redirect to eventslist rather than event also 
 # -- check if more db cols can be added to search function 
 # -- edit and delete (seems to be working)
