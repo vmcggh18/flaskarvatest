@@ -75,9 +75,6 @@ def things():
 # function to retrieve api_key
 def get_api_key():
     api = os.environ.get('api')
-    # config = configparser.ConfigParser()
-    # config.read('config.ini')
-    # return config['openweathermap']['api']
     return api
    
 
