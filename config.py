@@ -1,4 +1,5 @@
 import os
+
 class Config(object):
     DEBUG = False
     TESTING = False
@@ -6,6 +7,10 @@ class Config(object):
     SECRET_KEY = os.environ.get('SECRET_KEY')
     EMAIL = os.environ.get('EMAIL')
     PASSWORD = os.environ.get('PASSWORD')
+    # uri = os.environ["DATABASE_URL"]
+    # if uri.startswith("postgres://"):
+    #     uri = uri.replace("postgres://", "postgresql://", 1)
+    # SQLALCHEMY_DATABASE_URI = uri
 
 class ProductionConfig(Config):
     DEBUG=False

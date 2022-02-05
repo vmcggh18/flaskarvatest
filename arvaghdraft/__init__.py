@@ -17,11 +17,15 @@ app.config.from_object("config.DevelopmentConfig")
 # uri = os.environ.get("DATABASE_URL")
 # if uri.startswith("postgres://"):
 #         uri = uri.replace("postgres://", "postgresql://", 1)
-# use this one in production
-# app.config['SQLALCHEMY_DATABASE_URI'] = uri or 'sqlite:///site.db'
-# app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL') or 'sqlite:///site.db'
-# use this one in dev
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'   
+if app.config.from_object("config.DevelopmentConfig") == 'development':
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
+else:
+    uri = os.environ["DATABASE_URL"]
+    if uri.startswith("postgres://"):
+        uri = uri.replace("postgres://", "postgresql://", 1)
+    # SQLALCHEMY_DATABASE_URI = uri
+    app.config['SQLALCHEMY_DATABASE_URI'] = uri
+    # app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')  
 # get rid of deprecation error (however must be true if using whoosh for searching)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 # initialise db to store model tables
