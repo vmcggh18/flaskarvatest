@@ -148,7 +148,9 @@ def handle_errors():
 def search():
     visit = session.get("sitevisits",None)
     query = request.form['searched']
-    events = Event.query.filter(or_(Event.title.ilike(f'%{query}%'), Event.date.ilike(f'%{query}%'))).all()
+    # not working in heroku
+    # events = Event.query.filter(or_(Event.title.ilike(f'%{query}%'), Event.date.ilike(f'%{query}%'))).all()
+    events = Event.query.filter_by(title=query).all()   
     print(f"query is {query}")
     print(type(f"query type is{query}"))
     print(f"Events are {events}")

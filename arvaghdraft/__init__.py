@@ -14,9 +14,7 @@ load_dotenv()
 app = Flask(__name__)
 
 app.config.from_object("config.DevelopmentConfig")
-# uri = os.environ.get("DATABASE_URL")
-# if uri.startswith("postgres://"):
-#         uri = uri.replace("postgres://", "postgresql://", 1)
+
 if app.config.from_object("config.DevelopmentConfig") == 'development':
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 else:
@@ -25,8 +23,11 @@ else:
         uri = uri.replace("postgres://", "postgresql://", 1)
     # SQLALCHEMY_DATABASE_URI = uri
     app.config['SQLALCHEMY_DATABASE_URI'] = uri
+    
     # app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')  
-# get rid of deprecation error (however must be true if using whoosh for searching)
+# use for local host 
+# # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
+# get rid of deprecation error (however must be true if using whoosh for searching
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 # initialise db to store model tables
 db = SQLAlchemy(app)
