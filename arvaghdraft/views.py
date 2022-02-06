@@ -114,7 +114,7 @@ def new_event():
 @app.route('/eventlist', methods=['GET', 'POST'])
 def eventlist():
     visit = session.get("sitevisits",None)
-    events =Event.query.order_by(Event.date_posted.desc()).all()
+    events =Event.query.order_by(Event.date.desc()).all()
     # set up countdown 
     # current = datetime.now()
     current = date.today()

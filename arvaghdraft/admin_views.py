@@ -9,13 +9,13 @@ from arvaghdraft.forms import RegistrationForm, LoginForm, UpdateAccountForm
 from arvaghdraft.models import User
 
 @app.route('/registration', methods=['GET', 'POST'])
-#  @login_required
+@login_required
 def registration():
     # prevent user accessing register form if already logged in
     # if current_user.is_authenticated:
     #     return redirect(url_for('index'))
     # else:
-    #want to create new administrators so ignore top lines
+    # want to create new administrators so ignore top lines
     form = RegistrationForm()
     if request.method == 'POST' and form.validate_on_submit():
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
