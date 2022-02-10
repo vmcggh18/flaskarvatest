@@ -21,12 +21,13 @@ import pandas as pd
 # -- authentication and authorisation (ongoing testing with anonymous and admin user)
 # -- notification when item uploaded (not yet)
 # -- email (not yet)
-# -- event email should not be unique as several events can be associated with an email 
+# -- event email should not be unique as many events can be associated with an email (changed)
 # -- check should approve redirect to eventslist rather than event also 
 # -- check if more db cols can be added to search function 
 # -- edit and delete (seems to be working)
 # -- user request function (is  this Required?)
 # -- prevent adjusting the text area size
+# -- replace existing slideshow with another to facilitate automatic and manual methods 
 # check there is no conflict with strftime conversion in event.html (with update function)
 
 

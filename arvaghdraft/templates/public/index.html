@@ -18,51 +18,54 @@
         </div>
         <div class="slideContainer">
             <div class="slide">
-                <img src="{{ url_for('static', filename='images/Market_House.jpg') }}" alt="Market House">
-                <div class="caption">Market House</div>
+                <div class="numbertext">1 / 6</div>
+                    <img src="{{ url_for('static', filename='images/Market_House.jpg') }}" alt="Market House">
             </div>
             <div class="slide">
-                <img src="{{ url_for('static', filename='images/church.png') }}" alt="Church of Ireland">
-                <div class="caption">Church of Ireland</div>
+                <div class="numbertext">2 / 6</div>
+                    <img src="{{ url_for('static', filename='images/church.png') }}" alt="Arvagh Church of Ireland">
             </div>
             <div class="slide">
-                <img src="{{ url_for('static', filename='images/arvafair.jpg') }}" alt="The fair">
-                <div class="caption">Town Fair circa 1940</div>
+                <div class="numbertext">3 / 6</div>
+                    <img src="{{ url_for('static', filename='images/arvafair.jpg') }}" alt="The fair circa 1940">
             </div>
             <div class="slide">
-                <img src="{{ url_for('static', filename='images/aerial.png') }}" alt="aerial image">
-                <div class="caption">Sky View!</div>
+                <div class="numbertext">4 / 6</div>
+                    <img src="{{ url_for('static', filename='images/aerial.png') }}" alt="View from the sky!">
             </div>
             <div class="slide">
-                <img src="{{ url_for('static', filename='images/chapel.png') }}" alt="catholic church">
-                <div class="caption">Sacred Heart Church</div>
+                <div class="numbertext">5 / 6</div>
+                <img src="{{ url_for('static', filename='images/chapel.png') }}" alt="Sacred Heart Church">
             </div>
             <div class="slide">
-                <img src="{{ url_for('static', filename='images/fishing.png') }}" alt="Fishing">
-                <div class="caption">Anglers Paradise!</div>
+                <div class="numbertext">6 / 6</div>
+                <img src="{{ url_for('static', filename='images/fishing.png') }}" alt="Anglers Paradise!">
             </div>
-            <a class="prevBtn">&#8810;</a>
-            <a class="nextBtn">&#8811;</a>
+            <a class="prevBtn" onclick="plusSlides(-1)">&#8810;</a>
+            <a class="nextBtn"  onclick="plusSlides(1)">&#8811;</a>
+            <div class="caption-container">
+                <p id="caption"></p>
+            </div>
         </div>
         <br>
         <div class="thumbnail">
             <div class="imageCol">
-                <img class="thumbImage" src="{{ url_for('static', filename='images/Market_House.jpg') }}" style="width:100%" onclick="setSlide(1)" alt="Market House">
+                <img class="thumbImage" src="{{ url_for('static', filename='images/Market_House.jpg') }}" style="width:100%" onclick="currentSlide(1)" alt="Market House">
             </div>
             <div class="imageCol">
-                <img class="thumbImage" src="{{ url_for('static', filename='images/church.png') }}" style="width:100%" onclick="setSlide(2)" alt="Church of Ireland">
+                <img class="thumbImage" src="{{ url_for('static', filename='images/church.png') }}" style="width:100%" onclick="currentSlide(2)" alt="Arvagh Church of Ireland">
             </div>
             <div class="imageCol">
-                <img class="thumbImage" src="{{ url_for('static', filename='images/arvafair.jpg') }}" style="width:100%" onclick="setSlide(3)" alt="The fair">
+                <img class="thumbImage" src="{{ url_for('static', filename='images/arvafair.jpg') }}" style="width:100%" onclick="currentSlide(3)" alt="The fair circa 1940">
             </div>
             <div class="imageCol">
-                <img class="thumbImage" src="{{ url_for('static', filename='images/aerial.png') }}" style="width:100%" onclick="setSlide(4)" alt="Aerial image">
+                <img class="thumbImage" src="{{ url_for('static', filename='images/aerial.png') }}" style="width:100%" onclick="currentSlide(4)" alt="View from the Sky!">
             </div>
             <div class="imageCol">
-                <img class="thumbImage" src="{{ url_for('static', filename='images/chapel.png') }}" style="width:100%" onclick="setSlide(5)" alt="catholic church">
+                <img class="thumbImage" src="{{ url_for('static', filename='images/chapel.png') }}" style="width:100%" onclick="currentSlide(5)" alt="Sacred Heart Chapel">
             </div>
             <div class="imageCol">
-                <img class="thumbImage" src="{{ url_for('static', filename='images/fishing.png') }}" style="width:100%" onclick="setSlide(6)" alt="fishing">
+                <img class="thumbImage" src="{{ url_for('static', filename='images/fishing.png') }}" style="width:100%" onclick="currentSlide(6)" alt="Anglers Paradise!">
             </div>
             <br>
         </div> 
