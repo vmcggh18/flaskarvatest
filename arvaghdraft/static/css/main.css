@@ -73,7 +73,6 @@ button#weather_submit:hover, button#search_submit:hover, input#submit:hover, .su
 .update_button:hover {
   background-color: var(--font-main);
   color:  var(--font-secondary);
-  
 }
 
 .del_button {

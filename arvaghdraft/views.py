@@ -22,13 +22,14 @@ import pandas as pd
 # -- notification when item uploaded (not yet)
 # -- email (not yet)
 # -- event email should not be unique as many events can be associated with an email (changed)
+# -- in code but not reflected yet as change not migrated
 # -- check should approve redirect to eventslist rather than event also 
 # -- check if more db cols can be added to search function 
 # -- edit and delete (seems to be working)
 # -- user request function (is  this Required?)
 # -- prevent adjusting the text area size
-# -- replace existing slideshow with another to facilitate automatic and manual methods 
-# check there is no conflict with strftime conversion in event.html (with update function)
+# -- replace existing slideshow with another to facilitate automatic and manual methods (done)
+# -- check there is no conflict with strftime conversion in event.html (with update function)
 
 
 # render home page. Also calls visit counter and loads weather and events data
@@ -103,7 +104,12 @@ def new_event():
     visit = session.get("sitevisits",None)
     form = EventForm()
     if form.validate_on_submit():
-        event = Event(title=form.title.data, name=form.name.data, date=form.date.data, venue=form.venue.data, eventtime=form.eventtime.data, message = form.message.data, email=form.email.data )
+        event = Event(title=form.title.data, name=form.name.data, date=form.date.data, venue=form.venue.data, eventtime=form.eventtime.data, message = form.message.data, email=form.email.data )   
+        # check date 
+        present = datetime.now()
+        if form.date.data < present.date():
+            flash("Your event date precedes today's date. Please enter a valid date in the future", 'info')
+            return redirect(url_for('new_event'))
         db.session.add(event)
         db.session.commit()
         flash('Your event has been submitted!', 'success')
