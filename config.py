@@ -11,6 +11,8 @@ class Config(object):
     # if uri.startswith("postgres://"):
     #     uri = uri.replace("postgres://", "postgresql://", 1)
     # SQLALCHEMY_DATABASE_URI = uri
+    # MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
+    # MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
 
 class ProductionConfig(Config):
     DEBUG=False

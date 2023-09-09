@@ -1,4 +1,4 @@
-from arvaghdraft import app, db
+from arvaghdraft import app, db, mail
 from flask import render_template, request, session, redirect, url_for, flash, abort
 from flask_login import current_user, login_required
 from sqlalchemy import desc
@@ -11,6 +11,7 @@ import requests
 import os
 import configparser
 import json
+from flask_mail import Mail, Message
 from arvaghdraft.forms import EventForm
 from arvaghdraft.models import User, Event
 import csv, operator
@@ -28,10 +29,21 @@ import pandas as pd
 # -- edit and delete (seems to be working)
 # -- user request function (is  this Required?)
 # -- prevent adjusting the text area size
+# -- reconfigure dates to european standard
 # -- replace existing slideshow with another to facilitate automatic and manual methods (done)
 # -- check there is no conflict with strftime conversion in event.html (with update function)
 
-
+@app.route("/email")
+def send_mail():
+    msg = Message('Test email!', recipients=['anthonyrowley7@hotmail.com'])
+    msg.body = "Have you received me!!!!"
+    # msg.html = '<b>Ditto but bolded</b>'
+    # with app.open_resource('cat.jpg') as cat:
+    #     msg.attach('cat.jpg', 'image/jpeg', cat.read())
+    mail.send(msg)
+    flash("Your mail has been sent!", 'success')
+    return redirect(url_for('index'))
+# 
 # render home page. Also calls visit counter and loads weather and events data
 @app.route("/",  methods=['get', 'post'])
 def index(): 
@@ -245,7 +257,22 @@ def error_403(error):
 def error_500(error):
     return render_template('errors/500.html'), 500
 
-    
+ # send bulk emails
+# @app.route('/bulk') 
+# def bulk():
+#     users = [
+#         {
+#         'name': 'Gertrude', 'email': 'gerty@example.com',  
+#     },
+#         {
+#         'name': 'Bernice', 'email': 'bunny@example.com',  
+#     }
+#         ]
+#     with mail.connect() as conn:
+#         for user in users:
+#             msg = Message('Hello', sender='yourId@gmail.com', recipients=['id1@gmail.com'])
+#             msg.body = "Hello Flask message sent from Flask-Mail" 
+#             conn.send(msg)
 # pass stuff to layout template    
 # @app.context_processor
 # def layout():

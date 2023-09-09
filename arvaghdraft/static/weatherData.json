@@ -8,36 +8,36 @@
 "id": 804,
 "main": "Clouds",
 "description": "overcast clouds",
-"icon": "04n"
+"icon": "04d"
 }
 ],
 "base": "stations",
 "main": {
-"temp": 6.2,
-"feels_like": 1.66,
-"temp_min": 6.2,
-"temp_max": 6.2,
-"pressure": 1016,
-"humidity": 90,
-"sea_level": 1016,
+"temp": 21.92,
+"feels_like": 22.2,
+"temp_min": 21.92,
+"temp_max": 21.92,
+"pressure": 1015,
+"humidity": 78,
+"sea_level": 1015,
 "grnd_level": 1009
 },
 "visibility": 10000,
 "wind": {
-"speed": 8.25,
-"deg": 192,
-"gust": 18.37
+"speed": 2.72,
+"deg": 230,
+"gust": 6
 },
 "clouds": {
-"all": 100
+"all": 91
 },
-"dt": 1644616891,
+"dt": 1694259630,
 "sys": {
 "country": "IE",
-"sunrise": 1644566323,
-"sunset": 1644600636
+"sunrise": 1694238739,
+"sunset": 1694286220
 },
-"timezone": 0,
+"timezone": 3600,
 "id": 2966873,
 "name": "Arvagh",
 "cod": 200
