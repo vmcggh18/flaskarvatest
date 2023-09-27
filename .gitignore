@@ -3,7 +3,6 @@ __pycache__
 .flaskenv
 venv/
 config.ini
-run.py
 views3.py
 views1.py
 admin_views1.py
