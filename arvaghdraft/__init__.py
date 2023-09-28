@@ -6,6 +6,7 @@ import os
 import re
 from dotenv import load_dotenv
 from flask_sqlalchemy import SQLAlchemy
+import sqlalchemy as sa
 from flask_login import LoginManager
 from flask_bcrypt import Bcrypt
 
@@ -52,6 +53,13 @@ app.config['MAIL_MAX_EMAILS'] = 5
 app.config['MAIL_ASCII_ATTACHMENTS'] = False
 mail = Mail(app)
 
+# check if db needs to be initialised
+engine = sa.create_engine(app.config['SQLALCHEMY_DATABASE_URI'])
+inspector = sa.inspect(engine)
+if not inspector.has_table("event"):
+    with app.app_context():
+        db.drop_all()
+        db.create_all
 
 from arvaghdraft import views
 from arvaghdraft import admin_views
