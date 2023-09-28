@@ -16,10 +16,10 @@ class Config(object):
 
 class ProductionConfig(Config):
     DEBUG=False
-#     uri = os.environ.get("DATABASE_URL")  
-#     if uri.startswith("postgres://"):
-#         db_change = uri.replace("postgres://", "postgresql://", 1)
-#     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
+    uri = os.environ.get("DATABASE_URL")  
+    if uri.startswith("postgres://"):
+        db_change = uri.replace("postgres://", "postgresql://", 1)
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
     
 class DevelopmentConfig(Config):
     DEBUG = True
