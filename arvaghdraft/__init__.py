@@ -9,7 +9,8 @@ from flask_sqlalchemy import SQLAlchemy
 import sqlalchemy as sa
 from flask_login import LoginManager
 from flask_bcrypt import Bcrypt
-
+# username password location name
+# postgresql://arva_test_db_example_user:U2YIM6p5ZYszdWlLwCvk9EYY54VEPvFg@dpg-ck63ad36fquc73c3dvog-a.frankfurt-postgres.render.com/arva_test_db_example
 
 load_dotenv()
 
@@ -52,6 +53,7 @@ app.config['MAIL_MAX_EMAILS'] = 5
 # app.config['MAIL_SUPPRESS_SEND'] = False
 app.config['MAIL_ASCII_ATTACHMENTS'] = False
 mail = Mail(app)
+
 
 # check if db needs to be initialised
 engine = sa.create_engine(app.config['SQLALCHEMY_DATABASE_URI'])
