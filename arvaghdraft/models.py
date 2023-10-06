@@ -42,4 +42,4 @@ class Event(db.Model):
         self.approved_event = True
     # determine what object looks like when printed out
     def __repr__(self):
-        return f"Event'{self.title}', '{self.name}', '{self.date}', '{self.venue}','{self.date_posted}', '{self.message}', '{self.email}', '{self.approved_event}')"
+        return f"Event('{self.title}', '{self.name}', '{self.date}', '{self.venue}','{self.date_posted}', '{self.message}', '{self.email}', '{self.approved_event}')"
