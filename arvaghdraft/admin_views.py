@@ -9,7 +9,7 @@ from arvaghdraft.forms import RegistrationForm, LoginForm, UpdateAccountForm
 from arvaghdraft.models import User
 
 @app.route('/registration', methods=['GET', 'POST'])
-@login_required
+# @login_required
 def registration():
     # prevent user accessing register form if already logged in
     # if current_user.is_authenticated:

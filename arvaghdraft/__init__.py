@@ -29,6 +29,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
 # use for local host 
 # # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 # get rid of deprecation error (however must be true if using whoosh for searching
+# ********* DO I NEED TO UNCOMMENT THIS? **********************
 #app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 # initialise db to store model tables
 db = SQLAlchemy(app)
