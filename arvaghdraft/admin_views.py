@@ -6,7 +6,7 @@ from PIL import Image
 import secrets
 
 from arvaghdraft.forms import RegistrationForm, LoginForm, UpdateAccountForm
-from arvaghdraft.models import User
+from arvaghdraft.models import Users
 
 @app.route('/registration', methods=['GET', 'POST'])
 # @login_required
@@ -19,7 +19,7 @@ def registration():
     form = RegistrationForm()
     if request.method == 'POST' and form.validate_on_submit():
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
-        user = User(username=form.username.data, email=form.email.data, password=hashed_password)
+        user = Users(username=form.username.data, email=form.email.data, password=hashed_password)
         db.session.add(user)
         db.session.commit()
         flash(f"Account created for {form.username.data}.", 'success')
@@ -38,7 +38,7 @@ def login():
     else:
         form = LoginForm()
         if form.validate_on_submit():
-            user = User.query.filter_by(email=form.email.data).first()
+            user = Users.query.filter_by(email=form.email.data).first()
             if user and bcrypt.check_password_hash(user.password, form.password.data):
                 login_user(user, remember=form.remember.data)
                 flash(f"{form.email.data}. You have logged in successfully!", 'success')  

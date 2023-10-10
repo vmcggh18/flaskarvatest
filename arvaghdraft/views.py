@@ -13,7 +13,7 @@ import configparser
 import json
 from flask_mail import Mail, Message
 from arvaghdraft.forms import EventForm
-from arvaghdraft.models import User, Event
+from arvaghdraft.models import Users, Event
 import csv, operator
 import pandas as pd
 # todo
